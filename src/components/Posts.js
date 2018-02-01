@@ -1,40 +1,44 @@
-import React from 'react'
-import PostsAPI from '../api/api'
+import React from "react";
+import {Link} from 'react-router-dom';
+import PostsAPI from "../api/api";
 
-import Post from '../components/Post'
+import Post from "../components/Post";
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 class AllPosts extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            posts: []
-        };
-    }
+    this.state = {
+      posts: []
+    };
+  }
 
-    componentDidMount() {
-        var _this = this;
-        PostsAPI.all().then(json => {
-            console.log(json)
-            const posts = json.posts;
-            this.setState({ posts });
-        })
-    }
+  componentDidMount() {
+    PostsAPI.getAllPosts().then(json => {
+      if (json) {
+        const posts = json.posts;
+        this.setState({ posts });
+      }
+    });
+  }
 
-    render() {
-        return (
-            <div>
-                <h2>All posts</h2>
-                <ul>
-                    {this.state.posts.map(post =>
-                        <li key={post._id}><Post post={post}/></li>
-                    )}
-                </ul>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <h2>All posts</h2>
+          <Link to={`/createpost`}>Create new post</Link>
+        <ul>
+          {this.state.posts.map(post => (
+            <li key={post._id}>
+              <Post post={post} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
 }
 
 AllPosts.propTypes = {};

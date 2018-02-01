@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 
 const Post = (props) => (
-    <Link to={`/posts/${props.post._id}`}>I am a post</Link>
+    <Link to={`/posts/${props.post._id}`}>{props.post.title}</Link>
 );
 
 
