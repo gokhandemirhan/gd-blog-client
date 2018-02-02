@@ -3,7 +3,10 @@ import {Link} from 'react-router-dom';
 
 
 const Post = (props) => (
-    <Link to={`/posts/${props.post._id}`}>{props.post.title}</Link>
+    <div>
+        <Link to={`/posts/${props.post._id}`}>{props.post.title}</Link>
+        <button onClick={ (e) => {props.handleDelete(props.post._id)} }>X</button>
+    </div>
 );
 
 

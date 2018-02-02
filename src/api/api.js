@@ -24,6 +24,21 @@ const PostsAPI = {
             .catch(error => {
                 console.log(error)
             })
+    },
+    deletePost:function (postId) {
+        return fetch(`${this.base}/posts/${postId}`,{
+            method: "DELETE",
+            body: JSON.stringify({id:postId}),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => {
+                return response.json();
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
 

@@ -43,7 +43,7 @@ class NewPost extends Component {
                 <div>
                     <label>
                         Content:
-                        <input type="text" name="content" value={this.state.value} onChange={this.handleChange} />
+                        <textarea name="content" value={this.state.value} onChange={this.handleChange}></textarea>
                     </label>
                 </div>
                 <input type="submit" value="Submit" />
