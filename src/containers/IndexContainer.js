@@ -21,6 +21,7 @@ class IndexPage extends Component {
       }
     });
   }
+
   handleDelete(postId){
       const r = window.confirm("Sure ?");
       if (r && postId) {
