@@ -1,18 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Post from "../components/Post";
+import Post from "./PostTile";
 
 const AllPosts = (props) => (
   <div>
-    <h2>All posts</h2>
-    <Link to={`/createpost`}>Create new post</Link>
-    <ul>
+      <h1 class="title">All posts</h1>
+      <h2 class="subtitle">
+          Here are all the <strong>posts</strong> that I wrote so far
+      </h2>
+
+    <div className="">
       {props.posts.map(post => (
-        <li key={post._id}>
+        <div key={post._id} className="box">
           <Post post={post} handleDelete={props.handleDelete}/>
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   </div>
 );
 

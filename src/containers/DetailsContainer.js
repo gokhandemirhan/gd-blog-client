@@ -1,10 +1,34 @@
-import React from 'react'
+import React, { Component } from "react";
+import PostsAPI from "../api/api";
 
-const DetailsPage = ({match}) => (
-    <div>
-        <h3>ID: {match.params.postId}</h3>
-    </div>
-);
+class DetailsPage extends Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      post: {}
+    };
+  }
+
+  componentDidMount() {
+    const postId = this.props.match.params.postId;
+
+    if (postId) {
+      PostsAPI.getPostById(postId).then(json => {
+        this.setState({ post: json.post });
+      });
+    }
+  }
+  render() {
+    return (
+      <div>
+        <h1 className="title is-1">{this.state.post.title}</h1>
+          <div className="content">
+              {this.state.post.content}
+          </div>
+      </div>
+    );
+  }
+}
 
 export default DetailsPage;
