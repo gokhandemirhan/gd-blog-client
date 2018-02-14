@@ -4,8 +4,8 @@ import Post from "./PostTile";
 
 const AllPosts = (props) => (
   <div>
-      <h1 class="title">All posts</h1>
-      <h2 class="subtitle">
+      <h1 className="title">All posts</h1>
+      <h2 className="subtitle">
           Here are all the <strong>posts</strong> that I wrote so far
       </h2>
 
