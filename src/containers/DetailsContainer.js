@@ -22,6 +22,9 @@ class DetailsPage extends Component {
   render() {
     return (
       <div>
+        <div className="image is-2by1">
+          <img src={this.state.post.photoUrl} alt=""/>
+        </div>
         <h1 className="title is-1">{this.state.post.title}</h1>
           <div className="content">
               {this.state.post.content}

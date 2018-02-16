@@ -34,7 +34,13 @@ const NewPost = props => (
 
       <div className="file">
         <label className="file-label">
-          <input className="file-input" type="file" name="photo" />
+          <input
+              className="file-input"
+              type="file"
+              name="photo"
+              // value={props.newPost.photo.name}
+              onChange={props.handleChange}
+          />
           <span className="file-cta">
             <span className="file-label">Choose a photo for the post</span>
           </span>

@@ -7,7 +7,7 @@ class NewPostPage extends Component {
         super(props);
         this.state = {
             isEdit:false,
-            newPost: {title:'',content:''}
+            newPost: {title:'',content:'',photo:''}
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -30,29 +30,37 @@ class NewPostPage extends Component {
             newPost.title = event.target.value;
         }else if(targetName === "content"){
             newPost.content = event.target.value;
+        }else if(targetName === "photo"){
+            newPost.photo = event.target.files[0];
         }
         this.setState({newPost});
     }
     handleUpdate(postId,event){
-        const data = this.state.newPost;
-        PostsAPI.updatePost(postId,data).then(json=>{
-            this.props.history.push('/posts')
-        });
-        event.preventDefault();
+
     }
     handleCreate(event){
-        const data = this.state.newPost;
-        PostsAPI.createNewPost(data).then(json=>{
-            this.props.history.push('/posts')
-        });
-        event.preventDefault();
+
     }
     handleSubmit(event) {
-        const isEdit =  this.state.isEdit;
-        if(isEdit){
-            this.handleUpdate(isEdit,event);
+        const postId =  this.state.isEdit;
+
+        event.preventDefault();
+        const data = this.state.newPost;
+        const formData = new FormData();
+
+        formData.append('title', data.title);
+        formData.append('content', data.content);
+        formData.append('photo', data.photo);
+
+        if(postId){
+            PostsAPI.updatePost(postId,formData).then(json=>{
+                this.props.history.push('/posts')
+            });
+            event.preventDefault();
         }else{
-            this.handleCreate(event);
+            PostsAPI.createNewPost(formData).then(json=>{
+                this.props.history.push('/posts')
+            });
         }
     }
     render() {

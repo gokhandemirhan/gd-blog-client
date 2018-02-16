@@ -12,9 +12,9 @@ const PostsAPI = {
   createNewPost: function(data) {
     return fetch(`${this.base}/posts`, {
       method: "POST",
-      body: JSON.stringify(data),
+      body: data,
       headers: {
-        "Content-Type": "application/json"
+        // "Content-Type": "multipart/form-data"
       }
     })
       .then(response => {
@@ -42,9 +42,9 @@ const PostsAPI = {
   updatePost: function(postId,data) {
     return fetch(`${this.base}/posts/${postId}`, {
       method: "PUT",
-      body: JSON.stringify(data),
+      body: data,
       headers: {
-        "Content-Type": "application/json"
+        // "Content-Type": "application/json"
       }
     })
       .then(response => {
