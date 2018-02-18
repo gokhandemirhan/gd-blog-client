@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import IndexContainer from "./IndexContainer";
 import DetailsContainer from "./DetailsContainer";
 import CreateUpdateContainer from "./CreateUpdatePostContainer";
+import AuthContainer from "./AuthContainer";
 
 class RootContainer extends Component {
   render() {
@@ -41,6 +42,12 @@ class RootContainer extends Component {
                 <Link className="navbar-item" to={`/createpost`}>
                   Create new post
                 </Link>
+                <Link className="navbar-item" to={`/register`}>
+                  Register
+                </Link>
+                <Link className="navbar-item" to={`/login`}>
+                  Login
+                </Link>
               </div>
             </div>
           </nav>
@@ -50,6 +57,8 @@ class RootContainer extends Component {
           <Route exact path="/posts/:postId" component={DetailsContainer} />
           <Route path="/posts/edit/:postId" component={CreateUpdateContainer} />
           <Route path="/createpost/" component={CreateUpdateContainer} />
+          <Route path="/register/" component={AuthContainer} />
+          {/*<Route path="/login/" component={AuthContainer} />*/}
           <hr />
         </div>
       </BrowserRouter>

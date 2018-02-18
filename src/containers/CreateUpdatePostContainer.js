@@ -35,12 +35,6 @@ class NewPostPage extends Component {
         }
         this.setState({newPost});
     }
-    handleUpdate(postId,event){
-
-    }
-    handleCreate(event){
-
-    }
     handleSubmit(event) {
         const postId =  this.state.isEdit;
 
